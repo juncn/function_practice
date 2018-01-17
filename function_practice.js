@@ -208,5 +208,64 @@ function createMatrix(n) {
     return result;
 }
 
-createMatrix(3);
-createMatrix(10);
+// createMatrix(3);
+// createMatrix(10);
+
+/**
+ * 11. Write a JavaScript function which will take an array of numbers stored and 
+ * find the second lowest and second greatest numbers, respectively
+ */
+
+function findSecond(arr) {
+    arr = arr.sort();
+    var secondLowest = 0;
+    var secondLargest = 0;
+    var lowFlag = false;
+    var highFlag = false;
+    for(var i = 0; i < arr.length; i++) {
+        if(arr[i] < arr[i+1] && lowFlag === false) {
+            secondLowest = arr[i+1];
+            lowFlag = true;
+        }
+        if(arr[arr.length-i-1] > arr[arr.length-i-2] && highFlag === false) {
+            secondLargest = arr[arr.length-i-2];
+            highFlag = true;
+        }
+    }
+    return [secondLowest, secondLargest];
+}
+
+// console.log(findSecond([1,4,5,6,3,2]));
+// console.log(findSecond([2,2,3,4,5,6,6]));
+
+/**
+ * 12. Write a JavaScript function which says whether a number is perfect
+ */
+
+function perfectNum(num) {
+    var divisorArr = [];
+    var divisorSum = 0;
+
+    // Find all divisors and store in array
+    for(var i = 1; i <= num; i++) {
+        if(num % i === 0) {
+            divisorArr.push(i);
+        }
+    }
+
+    // Find sum of all divisors
+    for(var j = 0; j < divisorArr.length-1; j++) {
+        divisorSum += divisorArr[j];
+    }
+
+    // Check if num is perfet number
+    if(divisorSum === num) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// console.log(perfectNum(6));
+// console.log(perfectNum(13));
+// console.log(perfectNum(28));
