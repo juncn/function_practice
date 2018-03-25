@@ -22,3 +22,17 @@ function Person(name, age, job){
     };
 }
 var person3 = new Person('Ben', 27, 'teacher');
+
+// Method 3: the Prototype pattern
+function Person(){};
+Person.prototype.name = 'Jun';
+Person.prototype.age = 24;
+Person.prototype.job = 'web developer';
+Person.prototype.sayName = function(){
+    console.log(this.name);
+}
+
+var person4 = new Person();
+person4.sayName();  // Jun
+var person5 = new Person();
+person5.sayName();  // Jun
